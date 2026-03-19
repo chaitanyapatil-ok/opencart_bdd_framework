@@ -122,29 +122,34 @@ public class Step_Def_UI {
 
 	@Then("user should be able to see the search products")
 	public void userShouldBeAbleToSeeTheSearchProduct() {
-		List<WebElement> ListofProducts = pom.getSearchProduct().productsList();
+		try {
+			List<WebElement> ListofProducts = pom.getSearchProduct().productsList();
 
-		boolean ProductFound = false;
+			boolean ProductFound = false;
 
-		for (WebElement ProductTexts : ListofProducts) {
-			String ProductName = ProductTexts.getText();
-			if (ProductName.equalsIgnoreCase("iphone")) {
-				ProductFound = true;
-				break;
-			} else if (ProductName.equalsIgnoreCase("Macbook air")) {
+			for (WebElement ProductTexts : ListofProducts) {
+				String ProductName = ProductTexts.getText();
+				if (ProductName.equalsIgnoreCase("iphone")) {
+					ProductFound = true;
+					break;
+				} else if (ProductName.equalsIgnoreCase("Macbook air")) {
 
-				ProductFound = true;
-				break;
-			} else if (ProductName.equalsIgnoreCase("iMac")) {
+					ProductFound = true;
+					break;
+				} else if (ProductName.equalsIgnoreCase("iMac")) {
 
-				ProductFound = true;
-				break;
+					ProductFound = true;
+					break;
+				}
 			}
-		}
-		if (ProductFound) {
-			Assert.assertTrue("ProductFound", true);
-		} else {
-			Assert.fail("Product is not Found");
+			if (ProductFound) {
+				Assert.assertTrue("ProductFound", true);
+			} else {
+				Assert.fail("Product is not Found");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Test failed due to exception" + e.getMessage());
 		}
 
 	}
@@ -153,15 +158,13 @@ public class Step_Def_UI {
 	public void userShouldBeAbleToSeeTheMessage(String NoProductFoundMsg) {
 
 		try {
-		String message=pom.getSearchProduct().msg_NoProductFound();
-		Assert.assertEquals("There is no product that matches the search criteria.", message);
-		}catch(Exception e)
-		{
+			String message = pom.getSearchProduct().msg_NoProductFound();
+			Assert.assertEquals("There is no product that matches the search criteria.", message);
+		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail("Test failed due to exception" + e.getMessage());
 		}
-		
 
 	}
-	
+
 }
