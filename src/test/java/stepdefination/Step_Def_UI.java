@@ -141,12 +141,27 @@ public class Step_Def_UI {
 				break;
 			}
 		}
-		if(ProductFound)
-		{
+		if (ProductFound) {
 			Assert.assertTrue("ProductFound", true);
-		}else {
+		} else {
 			Assert.fail("Product is not Found");
 		}
 
 	}
+
+	@Then("user should be able to see the message {string}")
+	public void userShouldBeAbleToSeeTheMessage(String NoProductFoundMsg) {
+
+		try {
+		String message=pom.getSearchProduct().msg_NoProductFound();
+		Assert.assertEquals("There is no product that matches the search criteria.", message);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			Assert.fail("Test failed due to exception" + e.getMessage());
+		}
+		
+
+	}
+	
 }

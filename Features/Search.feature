@@ -8,3 +8,14 @@ When user is enter the product name "iphone" in search bar
 And user is click on the search button
 Then user should be able to see the search products
 
+Scenario Outline: User is able to see the No product found message if the product is not available on the WebSite
+Given user is on the Home Page
+When user is enter the product name "<ProductName>" in search bar
+And user is click on the search button
+Then user should be able to see the message "There is no product that matches the search criteria."
+
+Examples:
+
+|ProductName|
+|Fitbit|
+|Titbit|
