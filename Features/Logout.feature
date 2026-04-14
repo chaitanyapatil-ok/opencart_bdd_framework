@@ -11,3 +11,5 @@ Scenario: Successful Login
    When the user click on the logout button
    Then the user should be redirected to the logout page
    
+   
+   

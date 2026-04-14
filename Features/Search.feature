@@ -1,4 +1,5 @@
 
+@searchFuntionality
 Feature: Search Functionality
 
 Scenario: User is able to search product by using  search functionality
@@ -27,7 +28,7 @@ Examples:
 |Fitbit|
 |MitPit|
 
-@searchFuntionality
+
 Scenario: User is able to see the No product found message when user is not giving any input into the search box
 Given user is on the Home Page
 And user is click on the search button

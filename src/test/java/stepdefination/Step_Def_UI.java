@@ -167,4 +167,31 @@ public class Step_Def_UI {
 
 	}
 
+	@When("user enter {string} and {string}")
+	public void userEnterEMailPassword(String email, String password) throws InterruptedException {
+
+		try {
+			pom.getLoginPage().setEmail(email);
+			pom.getLoginPage().setPassword(password);
+			pom.getLoginPage().clickLogin();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Test failed due to exception" + e.getMessage());
+		}
+	}
+
+	@Then("the warning message should be displayed {string}")
+	public void theWarningMessShouldBeDisplayed(String expMessage) throws InterruptedException {
+		try {
+			String Message = pom.getLoginPage().warMessag();
+			Assert.assertEquals(expMessage, Message);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail("Test failed due to exception" + e.getMessage());
+		}
+		Thread.sleep(3000);
+		
+	}
+
 }

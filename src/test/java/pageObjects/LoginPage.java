@@ -16,6 +16,7 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath="//input[@name='email']") WebElement txtEmail;
 	@FindBy(xpath="//input[@name='password']") WebElement txtPassword;
 	@FindBy(xpath="//input[@value='Login']") WebElement btnLogin;
+	@FindBy(xpath="//div[text()='Warning: No match for E-Mail Address and/or Password.']") WebElement warMessage;
 	
 	public void setEmail(String email)
 	{
@@ -30,6 +31,11 @@ public class LoginPage extends BasePage {
 	public void clickLogin()
 	{
 		btnLogin.click();
+	}
+	
+	public String warMessag()
+	{
+		return warMessage.getText();
 	}
 }
 
